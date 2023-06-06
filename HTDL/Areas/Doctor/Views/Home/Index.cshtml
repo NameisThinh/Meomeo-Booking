@@ -1,0 +1,88 @@
+﻿@model IEnumerable<HTDL.Models.PhieuDatLich>
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+<h2>Lịch Khám bệnh</h2>
+
+
+<table class="PDL table table-bordered display" id="PDL">
+
+    <thead>
+        <tr>
+
+            <th>
+                Bệnh Nhân
+            </th>
+            <th>
+                Dịch Vụ
+            </th>
+            <th>
+                Ngày Khám
+            </th>
+            <th>
+                Ca Khám
+            </th>
+            <th>
+                Thời Gian
+            </th>
+            <th>
+                Trạng Thái
+            </th>
+            <th>
+                Chức Năng
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BenhNhan.TenBN)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CTCongViec.DichVu.TenDV)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayKham)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CaKham.TenCa)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CaKham.ThoiGianBD)-@Html.DisplayFor(modelItem => item.CaKham.ThoiGianKT)
+
+                </td>
+                <td>
+                    <h6>Chưa khám</h6>
+                </td>
+                <td>
+                    <a class="btn btn-success" href="@Url.Action("Edit", "Home", new { area = "Doctor" ,id = item.MaPDL.Trim()})">Xác nhận đã khám</a>
+
+                    <a class="btn btn-danger" href="@Url.Action("Huy", "Home", new { area = "Doctor" ,id = item.MaPDL.Trim()})">Bệnh nhân không đến khám</a>
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@section datatable
+    {
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#PDL').DataTable();
+        });
+    </script>
+}

@@ -1,0 +1,26 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tieude {
+    display: flex;
+    border-bottom: 2px solid #333;
+}
+
+.chuyenkhoa-tieude {
+    width: 100%;
+    font-size: 15px;
+}
+
+.testing {
+    border: 1px solid #333
+}

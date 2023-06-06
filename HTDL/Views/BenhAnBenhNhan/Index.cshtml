@@ -1,0 +1,98 @@
+﻿
+@model PagedList.IPagedList<HTDL.Models.PhieuDatLich>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách lịch khám</h6>
+    </div>
+</div>
+
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+            <tr>
+
+
+                <th>
+                    Bác sĩ
+                </th>
+                <th>
+                    Dịch vụ
+                </th>
+                <th>
+                    ca khám
+                </th>
+                <th>
+                    Thời gian
+                </th>
+                <th>
+                    Ngày đặt
+                </th>
+                <th>
+                    Ngày khám
+                </th>
+                <th>
+                    Trạng thái
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CTCongViec.BacSi.TenBS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CTCongViec.DichVu.TenDV)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CaKham.TenCa)
+                    </td>
+                    <td>
+                        <a>@item.CaKham.ThoiGianBD-@item.CaKham.ThoiGianKT</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayDat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayKham)
+                    </td>
+                    <td>
+                        @{
+                            if (item.TrangThai == -1)
+                            {
+                                <h6 class="btn btn-danger">Đã hủy</h6>
+                            }
+                            if (item.TrangThai == 0)
+                            {
+                                <h6 class="btn btn-warning">Chưa duyệt</h6>
+                            }
+                            else if (item.TrangThai == 1)
+                            {
+                                <h6 class="btn btn-success">Đã duyệt</h6>
+                            }
+                            else if (item.TrangThai == 2)
+                            {
+                                <h6 class="btn btn-info">Đã Khám</h6>
+                            }
+                        }
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

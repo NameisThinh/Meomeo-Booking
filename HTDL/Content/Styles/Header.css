@@ -1,0 +1,421 @@
+﻿* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.home-header-container {
+    height: 80px;
+    width: 100%;
+    /*    padding: 0 40px;
+*/
+}
+
+    .home-header-container .home-header-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+
+        .home-header-container .home-header-content .left-content {
+            width: 25%;
+            align-items: center;
+            display: flex;
+            padding-left: 15px;
+        }
+
+            .home-header-container .home-header-content .left-content .header-logo {
+                background: url("") center center no-repeat;
+                width: 100%;
+                cursor: pointer;
+                transform: scale(0.6, 0.6);
+                margin-left: -45px;
+            }
+
+            .home-header-container .home-header-content .left-content i {
+                font-size: 25px;
+                color: grey;
+                cursor: pointer;
+            }
+
+        .home-header-container .home-header-content .center-content {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .home-header-container .home-header-content .center-content .child-content {
+                cursor: pointer;
+            }
+
+                .home-header-container .home-header-content .center-content .child-content .subs-title {
+                    font-weight: 400;
+                    font-size: 12px;
+                }
+
+        .home-header-container .home-header-content .right-content {
+            width: 25%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+            .home-header-container .home-header-content .right-content .support {
+                padding-right: 65px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+                .home-header-container .home-header-content .right-content .support i {
+                    font-size: 15px;
+                    margin-right: 5px;
+                }
+
+            .home-header-container .home-header-content .right-content .languge-vi {
+                cursor: pointer;
+            }
+
+                .home-header-container .home-header-content .right-content .languge-vi.active {
+                    color: orange;
+                }
+
+            .home-header-container .home-header-content .right-content .languge-en {
+                margin: 0 10px;
+                cursor: pointer;
+            }
+
+                .home-header-container .home-header-content .right-content .languge-en.active {
+                    color: blue;
+                }
+
+.center-content .child-content:hover {
+    color: white;
+}
+
+a:hover, a:focus {
+    color: black;
+    text-decoration: none;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.datlichngay {
+    width: 140px;
+    height: 40px;
+    margin-top: 32px;
+    background: rgb(247, 216, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 25px;
+    margin-top: 55px;
+}
+
+    .datlichngay a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .datlichngay:hover {
+        background: #e3b324;
+    }
+
+.home-header-banner {
+    height: 570px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+    .home-header-banner .content-up {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.1));
+        height: 65%;
+        padding-top: 15px;
+    }
+
+        .home-header-banner .content-up .title1 {
+            text-align: center;
+            font-size: 30px;
+            text-shadow: 1px 1px 1px #333;
+            margin-bottom: 5px;
+            color: white;
+            margin-top: 30px;
+        }
+
+        .home-header-banner .content-up .title2 {
+            text-align: center;
+            font-size: 30px;
+            text-shadow: 1px 1px 1px #333;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .home-header-banner .content-up .search {
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            padding: 10px;
+            border-radius: 25px;
+            background: #f7d800;
+        }
+
+            .home-header-banner .content-up .search i {
+                margin: 0 5px;
+            }
+
+            .home-header-banner .content-up .search input {
+                height: 30px;
+                width: 360px;
+                background: transparent;
+                border: none;
+                outline: none;
+            }
+
+    .home-header-banner .content-down {
+        height: 35%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9), white);
+    }
+
+.right-content .support > i {
+    color: #49bce2;
+}
+
+.home-header-banner .content-down .options {
+    text-align: center;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+    .home-header-banner .content-down .options .options-child {
+        width: 100px;
+        cursor: pointer;
+    }
+
+        .home-header-banner .content-down .options .options-child:hover {
+            color: #49bce2;
+        }
+
+        .home-header-banner .content-down .options .options-child .icon-child {
+            background: white;
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+            border-radius: 50%;
+            text-align: center;
+            margin: 0 auto;
+            box-shadow: 0 0 3px #49bce2;
+        }
+            .home-header-banner .content-down .options .options-child .icon-child i {
+                color: #49bce2;
+                font-size: 20px;
+            }
+
+        .home-header-banner .content-down .options .options-child .text-child {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+.footer {
+    background-color: #49bce2;
+}
+
+.row {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: black;
+    text-align: center;
+}
+
+    .row .row1 {
+        width: 40%;
+    }
+
+    .row .row2 {
+        width: 30%
+    }
+
+    .row .row2, .Gioithieuchung a {
+        text-decoration: none;
+    }
+
+        .Gioithieuchung a:hover {
+            color: white;
+        }
+
+    .row .row3 {
+        width: 30%;
+    }
+
+.banner {
+    width: 100%;
+    display: flex;
+}
+
+    .banner .banner-left {
+        width: 70%;
+        float: left;
+        list-style: none;
+        display: flex;
+    }
+
+    .banner .banner-right {
+        width: 30%;
+        float: left;
+        list-style: none;
+    }
+
+
+.newsletter {
+    width: 100%;
+    background: #f2f2f2;
+    margin-top: 81px;
+}
+
+.newsletter_text {
+    height: 120px;
+}
+
+.newsletter_form {
+    height: 120px;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.newsletter_submit_btn {
+    width: 160px;
+    height: 46px;
+    border: none;
+    background: #fe4c50;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.title-0i-foot {
+    text-align: center;
+}
+
+.bando {
+    width: 100%;
+}
+
+.Gioithieuchung a {
+    color: black;
+}
+
+/*Login*/
+
+.login-background {
+    height: 100vh;
+    background: linear-gradient(135deg, #22c1c3 0%, #fdbb2d 100%);
+}
+
+    .login-background .login-container {
+        width: 340px;
+        border-radius: 10px;
+        background-color: white;
+        position: absolute;
+        margin: auto;
+        right: 0;
+        left: 0;
+        height: 360px;
+        margin-top: 100px;
+    }
+
+        .login-background .login-container .login-content {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+            .login-background .login-container .login-content .text-login {
+                text-align: center;
+                font-weight: 600;
+                font-size: 24px;
+                padding-top: 20px;
+            }
+
+        .login-background .login-container .login-input {
+            margin: 0;
+        }
+
+            .login-background .login-container .login-input .custom-input-password {
+                position: relative;
+            }
+
+            .login-background .login-container .login-input i {
+                position: absolute;
+                right: 5px;
+                top: 10px;
+                cursor: pointer;
+            }
+
+        .login-background .login-container .btn-login {
+            width: 100%;
+            margin: 10px 0;
+            height: 30px;
+            border-radius: 30px;
+            outline: none;
+            border: none;
+            background: linear-gradient(135deg, #22c1c3 0%, #fdbb2d 100%);
+            font-size: 16px;
+            color: white;
+        }
+
+        .login-background .login-container .forgot-password {
+            font-size: 12px;
+        }
+
+        .login-background .login-container .social-login {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+            .login-background .login-container .social-login .google {
+                font-size: 30px;
+                background-color: #c32424;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                color: white;
+                margin-right: 10px;
+            }
+
+            .login-background .login-container .social-login .facebook {
+                font-size: 30px;
+                background-color: #3073ff;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                color: white;
+            }
+

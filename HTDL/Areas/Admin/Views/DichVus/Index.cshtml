@@ -1,0 +1,74 @@
+﻿@model IEnumerable<HTDL.Models.DichVu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+
+<p class="text-center btn btn-success">
+    @Html.ActionLink("Thêm Dich Vu", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+
+<div class="card-header py-3">
+    <h4 class="m-0 font-weight-bold text-primary text-center">DANH SÁCH DỊCH VỤ</h4>
+</div>
+
+<table class="table table-bordered display" id="tableDichVu">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenDV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GiaDV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </th>
+            <th>
+                Chức năng
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaDV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoTa)
+                </td>
+
+                <td>
+
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.MaDV.Trim() }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaDV.Trim() }, new { @class = "btn btn-warning" })
+                    @*@Html.ActionLink("Xóa", "Delete",  new { id = item.MaDV.Trim() }, new {@class = "btn btn-danger" } )*@
+
+                </td>
+            </tr>
+        }
+    </tbody>
+   
+
+</table>
+@section datatable
+    {
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tableDichVu').DataTable();
+        });
+    </script>
+}

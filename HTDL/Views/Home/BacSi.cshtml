@@ -1,0 +1,56 @@
+﻿@model IEnumerable<HTDL.Models.BacSi>
+
+<div class="row  m-0">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4  p-3">
+            <a href="">
+                <div class="card">
+                    <div class="card card-header">
+                        @Html.DisplayFor(modelItem => item.TenBS)
+                    </div>
+                    <div class="card-body">
+                        <div class="row ">
+                            <div class="col-md-4 border-end">
+                                <img src="@item.Avt" width="100%" height="130" />
+                            </div>
+                            <div class="col-md-8 text-start">
+                                <div>
+                                    @Html.DisplayFor(modelItem => item.Khoa.TenKhoa)
+                                </div>
+                                <div>
+                                    @Html.DisplayFor(modelItem => item.ChucVu.TenCV)
+                                </div>
+                                <div>
+                                    @Html.DisplayFor(modelItem => item.NgaySinh)
+
+                                </div>
+                                <div>
+                                    @if (item.GioiTinh == true)
+                                    {
+
+
+                                        <div>Giới tính: Nam</div>
+
+                                    }
+                                    else
+                                    {
+                                        <div>Giới tính: Nữ</div>
+
+                                    }
+                                </div>
+                                <div>
+                                    @Html.DisplayFor(modelItem => item.SDT)
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    }
+</div>

@@ -1,0 +1,195 @@
+﻿@model IEnumerable<HTDL.Models.PhieuDatLich>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+<div class="card-header py-3">
+    <h4 class="m-0 font-weight-bold text-primary text-center">Danh Sách Lịch Khám</h4>
+</div>
+
+
+
+@*<div class="text-right m-4">
+        <form action="/admin/lichkham/Index" method="post">
+            <select name='TrangThai' onchange=' this.form.submit()'>
+                <option>Xem theo</option>
+                <option value='0'>Tất cả</option>
+                <option value='1'>Đã duyệt</option>
+                <option value='2'>Chưa duyệt</option>
+                <option value='3'>Đã khám</option>
+                <option value='4'>Đã hủy</option>
+            </select>
+        </form>
+    </div>*@
+
+<table class="table table-bordered display" id="tablePDL">
+    <thead>
+        <tr>
+            <th>
+                ca khám
+            </th>
+            <th>
+                Dịch vụ
+            </th>
+            <th>
+                Bác sĩ
+            </th>
+            <th>
+                Tên bệnh nhân
+            </th>
+
+            <th>
+                Ngày đặt
+            </th>
+            <th>
+                Ngày khám
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CaKham.TenCa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CTCongViec.DichVu.TenDV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CTCongViec.BacSi.TenBS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BenhNhan.TenBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayKham)
+                </td>
+                <td>
+                    @{
+                        if (item.TrangThai == -1)
+                        {
+                            <h6 class="btn btn-danger">Đã hủy</h6>
+                        }
+                        if (item.TrangThai == 0)
+                        {
+                            <h6 class="btn btn-warning">Chưa duyệt</h6>
+                        }
+                        else if (item.TrangThai == 1)
+                        {
+                            <h6 class="btn btn-success">Đã duyệt</h6>
+                        }
+                        else if (item.TrangThai == 2)
+                        {
+                            <h6 class="btn btn-info">Đã Khám</h6>
+                        }
+
+                    }
+                </td>
+                <td>
+                    @if (item.TrangThai == 0)
+                    {
+                        @*@Html.ActionLink("Xác Nhận", "Edit", new { id = item.MaPDL.Trim() }, new { @class = "btn btn-warning" })*@
+                        <input type="button" id="duyetdon" class="duyetdon btn btn-warning" value="Duyệt" data-id="@item.MaPDL" />
+                        @*<a href="#" class="duyetdon btn btn-warning" data-id="@item.MaPDL.Trim()">Duyệt</a>*@
+                    }
+                </td>
+
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+<div>
+    <select name='TrangThai' class="danhsach">
+        <option value="0">Tất cả</option>
+        <option value="1">Chưa duyệt</option>
+        <option value="2">Đã duyệt</option>
+        <option value="3">Đã khám</option>
+        <option value="4">Đã hủy</option>
+
+    </select>
+    <input type="button" class="excel btn btn-warning" id="excel" value="Xuất file excel" />
+
+</div>
+
+
+@section datatable
+    {
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tablePDL').DataTable();
+        });
+    </script>
+}
+@section duyetdon
+    {
+    <script>
+        $(function () {
+            $('.duyetdon').click(function () {
+                var btn = $(this);
+                var id = btn.data('id');
+                $.ajax(
+                    {
+                        url: '/Admin/LichKham/Edit',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (data) {
+                            alert(data.msg);
+                            btn.hide();
+                        },
+
+                        error: function (err) {
+
+                            alert(data.msg);
+
+                        }
+                    });
+            });
+        });
+    </script>
+}
+@section xuatexcel
+    {
+    <script>
+        $(function () {
+            $('.excel').click(function () {
+                var id = $('.danhsach').val();
+                $.ajax(
+                    {
+                        url: '/Admin/LichKham/XuatExcel',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (data) {
+                            alert(data.msg);
+                            location.href = '/Content/FileExcel/' + data.msg;
+                        },
+
+                        error: function (err) {
+
+                            alert(data.msg);
+
+                        }
+                    });
+            });
+        });
+    </script>
+}
+
+
+
+

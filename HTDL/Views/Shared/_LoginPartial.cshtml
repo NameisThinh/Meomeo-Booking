@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNet.Identity
+<link href="~/Content/Styles/Dropdown.css" rel="stylesheet" />
+@{ 
+    string name = (string)Session["Name"];
+}
+@if (Request.IsAuthenticated)
+{
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">
+            @name
+        </button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="@Url.Action("ChangePassword", "Manage", new {area=""})">Đổi Mật Khẩu</a>
+            <a href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
+        </div>
+    </div>  
+    using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+}
+else
+{
+    <div class="navbar-nav navbar-right">
+        <div class="">
+
+            <b class="p-4">
+                @Html.ActionLink("Đăng Ký", "Register", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink", @class = "subs-title" })
+            </b>
+            <b class="p-2">
+                @Html.ActionLink("Đăng Nhập", "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink", @class = "subs-title" })
+            </b>
+        </div>
+    </div>
+}
+
+
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>

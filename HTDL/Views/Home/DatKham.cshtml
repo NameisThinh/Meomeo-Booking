@@ -1,0 +1,60 @@
+﻿@model HTDL.Models.LichKhamModel
+
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+
+                minDate: 'Today +1d',
+                maxDate: "+7d"
+            });
+        });
+    </script>
+}
+@foreach (var item in Model.lsCTCV)
+{
+    <div class="card">
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="@item.BacSi.Avt" class="rounded-4" />
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Tên bác sĩ: @item.BacSi.TenBS </p>
+                            <p>Chức vụ: @item.BacSi.ChucVu.TenCV  </p>
+                            <p>Khoa: @item.BacSi.Khoa.TenKhoa </p>
+                        </div>
+                        <div class="col-md-6">
+                            <form action="Contact" method="post">
+                                <input value="@item.MaCV" name="macv" type="hidden" />
+                                <div>Ngày khám:</div>
+                                <p>
+                                    <input class="datepicker text-center" type="text" name="ngaykham" />
+                                </p>
+                                <p>
+                                    <div>Ca khám:</div>
+                                    <select name='maca' class="text-center">
+                                        @foreach (var item1 in Model.lsCaKham)
+                                        {
+                                            <option value='@item1.MaCa'>@item1.ThoiGianBD - @item1.ThoiGianKT </option>
+
+                                        }
+                                    </select>
+                                </p>
+                                <p>
+                                    <button>Đặt lịch</button>
+
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

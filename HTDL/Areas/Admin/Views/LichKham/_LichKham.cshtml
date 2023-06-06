@@ -1,0 +1,79 @@
+﻿@model PagedList.IPagedList<HTDL.Models.PhieuDatLich>
+@using PagedList;
+@using PagedList.Mvc;
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+    <tr>
+        <th>
+            ca khám
+        </th>
+        <th>
+            Dịch vụ
+        </th>
+        <th>
+            Bác sĩ
+        </th>
+        <th>
+            Tên bệnh nhân
+        </th>
+
+        <th>
+            Ngày đặt
+        </th>
+        <th>
+            Ngày khám
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaKham.TenCa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CTCongViec.DichVu.TenDV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CTCongViec.BacSi.TenBS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BenhNhan.TenBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayKham)
+            </td>
+            <td>
+                @{
+                    if (item.TrangThai == true)
+                    {
+                        <h6 class="btn btn-success">Đã duyệt</h6>
+                    }
+                    else
+                    {
+                        <h6 class="btn btn-danger">chưa duyệt</h6>
+                    }
+
+
+                }
+            </td>
+            <td>
+                @if (!item.TrangThai)
+                {
+                    @Html.ActionLink("Xác Nhận", "Edit", new { id = item.MaPDL.Trim() }, new { @class = "btn btn-warning" })
+                }
+            </td>
+
+
+        </tr>
+    }
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount @Html.PagedListPager(Model, page => Url.Action("_LichKham", new { page }))

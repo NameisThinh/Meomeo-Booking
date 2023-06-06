@@ -1,0 +1,66 @@
+﻿@model IEnumerable<HTDL.Models.CaKham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+<div class="card-header py-3 text-center">
+    <h4 class="m-0 font-weight-bold text-primary">Danh sách Ca Khám</h4>
+</div>
+
+<table class="table table-bordered display" id="tableCaKham">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenCa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThoiGianBD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThoiGianKT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLuongKham)
+            </th>
+            <th>
+                Chức Năng
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenCa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThoiGianBD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThoiGianKT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuongKham)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaCa }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Thêm", "Create", new { id = item.MaCa }, new { @class = "btn btn-success" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section datatable
+    {
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tableCaKham').DataTable();
+        });
+    </script>
+}

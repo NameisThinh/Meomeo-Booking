@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoubleHT</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/Styles/Header.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="home-header-container">
+            <div class="home-header-content">
+                <div class="left-content">
+                    <a href="/">
+                        <img src="~/Content/Images/Logo.png" width="125" />
+                    </a>
+                </div>
+                <div class="center-content">
+
+                    <div class="child-contentt">
+                        <div class="subs-title"><b>@Html.ActionLink("Giới thiệu", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</b></div>
+                    </div>
+                    <div class="child-contentt">
+                        <div class="subs-title"><b>@Html.ActionLink("Dịch vụ", "DichVu", "Home", new { area = "" }, new { @class = "navbar-brand" })</b></div>
+                    </div>
+                    <div class="child-contentt">
+                        <div class="subs-title"><b>@Html.ActionLink("Bác sĩ", "BacSi", "Home", new { area = "" }, new { @class = "navbar-brand" })</b></div>
+                    </div>
+                    <div class="child-contentt">
+                    @if (User.IsInRole("BenhNhan"))
+                    {
+                        <div class="subs-title"><b>@Html.ActionLink("Lịch Sử khám bệnh", "index", "BenhAnBenhNhan", new { area = "" }, new { @class = "navbar-brand" })</b></div>
+                    }
+                    </div>
+                    @*<div class="child-content">
+                            <div><b>Gói khám</b></div>
+                            <div class="subs-title">Khám sức khỏe tổng quát</div>
+                        </div>*@
+                </div>
+                <div class="right-content">
+                    <div class="support">
+                        @Html.Partial("_LoginPartial")
+                        @*<i class="fas fa-question-circle"></i>*@
+                        @*Hỗ trợ*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+        <footer>
+            <div class="footer">
+                <div class="row">
+                    <div class="row1">
+                        <div class="title-0i-foot">
+                            <b>BẢN ĐỒ VỊ TRÍ</b>
+                        </div>
+                        <iframe class="bando" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125412.67170446774!2d106.55240506249999!3d10.8001286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528d0911a5c55%3A0xef4a80f1f2c1a13b!2zQuG7h25oIHZp4buHbiDEkGEgS2hvYSBIb8OgbiBN4bu5IFPDoGkgR8Oybg!5e0!3m2!1svi!2s!4v1679467231843!5m2!1svi!2s" width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="row2">
+                        <div class="title-truycapnhanh-foot"><b>TRUY CẬP NHANH</b></div>
+                        <div class="Gioithieuchung">
+                            <a>@Html.ActionLink("Giới thiệu", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a><br />
+
+                            <a>@Html.ActionLink("Dịch vụ", "DichVu", "Home", new { area = "" }, new { @class = "navbar-brand" }) </a><br />
+
+                            <a>@Html.ActionLink("Bác sĩ", "BacSi", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+                        </div>
+                    </div>
+                    <div class="row3">
+                        <div class="title-lienhe-foot"><b>LIÊN HỆ</b></div>
+                        <div class="Thongtinbenhvien">
+                            <span>DOUBLE HT</span><br />
+                            <div>Địa chỉ:HuTech.</div>
+                            <div>
+                                Điện thoại:0858547574 - Tổng đài: 0916010026<div />
+                                <div>Email: benhvientt@gmail.com</div>
+                                <div>Website: benhvientt.com.vn</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <p>&copy; @DateTime.Now.Year - Double HT</p>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @RenderSection("upload", required: false)
+    @RenderSection("datatable", required: false)
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Test</h2>
+<form action="test" method="post">
+    <div class="form-group">
+        <div class="col-md-10">
+            <strong>Hình</strong>
+            <input type="text" name="image"
+            <input type="file" name="fileUpload" id="fileUpload" accept="image/*" style="display:none;" />
+            <input type="button" id="btnUpload" value="Chọn" class="btn btn-success" />
+        </div>
+    </div>
+</form>
+
+
+
+@section upload
+{
+    <script>
+        $(function () {
+            $('#btnUpload').click(function () {
+                $('#fileUpload').trigger('click');
+            });
+        });
+
+        $('#fileUpload').change(function () {
+            if (window.FormData !== undefined) {
+                var fileUpload = $('#fileUpload').get(0);
+                var files = fileUpload.files;
+                var formData = new FormData();
+                formData.app('file', files[0]);
+                $.ajax(
+                    {
+                        type: 'POST',
+                        url: '/Account/ProcessUpload',
+                        contentType: false,
+                        processData: false,
+                        data: formData,
+                        success: function (urlImage) {
+                            $('#pictureUpload').attr('src', urlImage);
+                            $('#hinh').val(urlImage);
+                        },
+
+                        error: function (err) {
+
+                            alert('Error ', err.statusText);
+                        }
+                    });
+            }
+        });
+
+    </script>
+}

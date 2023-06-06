@@ -1,0 +1,55 @@
+﻿@model HTDL.Models.DichVu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div>
+    <h4 class="text-center font-weight-bold  w-100 text--3  text-primary"> Chi tiết Thông Tin Dịch Vụ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <div class="form-group font-weight-bold">
+            <dt class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.TenDV)
+            </dt>
+
+            <dd class="form-control">
+                @Html.DisplayFor(model => model.TenDV)
+            </dd>
+        </div>
+
+        <div class="form-group font-weight-bold">
+            <dt class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.GiaDV)
+            </dt>
+
+            <dd class="form-control">
+                @Html.DisplayFor(model => model.GiaDV)
+            </dd>
+        </div>
+
+        <div class="form-group font-weight-bold">
+            <dt class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.MoTa)
+            </dt>
+
+            <dd class="form-control">
+                @Html.DisplayFor(model => model.MoTa)
+            </dd>
+        </div>
+
+
+
+
+  
+
+    </dl>
+</div>
+<p>
+  
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "w-100  btn btn-danger" })
+</p>

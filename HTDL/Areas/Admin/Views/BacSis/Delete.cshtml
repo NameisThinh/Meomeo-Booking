@@ -1,0 +1,103 @@
+﻿@model HTDL.Models.BacSi
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div>
+    <div class="text-center font-weight-bold  w-100 text--3  text-primary">Bạn có muốn xóa Bác Sĩ @Html.DisplayFor(model => model.TenBS) không ?</div>
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="form-group font-weight-bold">
+            <dt class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.ChucVu.TenCV)
+            </dt>
+
+            <dd class="form-control">
+                @Html.DisplayFor(model => model.ChucVu.TenCV)
+            </dd>
+        </div>
+
+        <div class="form-group font-weight-bold">
+            <dt class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.Khoa.TenKhoa)
+            </dt>
+
+            <dd class="form-control">
+                @Html.DisplayFor(model => model.Khoa.TenKhoa)
+            </dd>
+        </div>
+
+        <div class="form-group font-weight-bold">
+            <dt class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.Avt)
+            </dt>
+
+            <dd class="form-control">
+                @Html.DisplayFor(model => model.Avt)
+            </dd>
+        </div>
+
+
+        <div class="form-group font-weight-bold">
+            <dt class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.TenBS)
+            </dt>
+
+            <dd class="form-control">
+                @Html.DisplayFor(model => model.TenBS)
+            </dd>
+        </div>
+
+        <div class="form-group font-weight-bold">
+            <dt class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.NgaySinh)
+            </dt>
+
+            <dd class="form-control">
+                @Html.DisplayFor(model => model.NgaySinh)
+            </dd>
+        </div>
+
+
+
+        <div class="form-group font-weight-bold">
+            <dt class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.GioiTinh)
+            </dt>
+
+            <dd class="form-control">
+                @{
+                    if (Model.GioiTinh == true)
+                    {
+                        <h6>Nam</h6>
+                    }
+                    else
+                    {<h6>Nữ</h6> }
+                }
+            </dd>
+        </div>
+
+        <div class="form-group font-weight-bold">
+            <dt class="control-label col-md-2">
+                @Html.DisplayNameFor(model => model.SDT)
+            </dt>
+
+            <dd class="form-control">
+                @Html.DisplayFor(model => model.SDT)
+            </dd>
+        </div>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-warning w-100" /> |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "w-100  btn btn-danger" })
+</div>
+    }
+</div>

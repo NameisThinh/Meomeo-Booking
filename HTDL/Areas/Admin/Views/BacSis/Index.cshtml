@@ -1,0 +1,94 @@
+﻿@model IEnumerable<HTDL.Models.BacSi>
+
+@{ 
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<div class="card-header py-3">
+    <h4 class="m-0 font-weight-bold text-primary text-center">Danh sách Bác Sĩ</h4>
+</div>
+
+<p class="text-center btn btn-success">
+    @Html.ActionLink("Thêm Bác Sĩ", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+<table id="tableBacSi" class="table table-bordered display">
+    <thead>
+        <tr>
+            <th>
+                HỌ TÊN
+            </th>
+            <th>
+                NGÀY SINH
+            </th>
+            <th>
+                GIỚI TÍNH
+            </th>
+            <th>
+                SDT
+            </th>
+            <th>
+                CHỨC VỤ
+            </th>
+            <th>
+                KHOA
+            </th>
+            <th>
+                Chức năng
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenBS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </td>
+                <td>
+                    @{
+                        if (item.GioiTinh == true)
+                        {
+                            <h6>Nam</h6>
+                        }
+                        else
+                        {<h6>Nữ</h6> }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChucVu.TenCV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Khoa.TenKhoa)
+                </td>
+
+                <td>
+                    @*@Html.ActionLink("Xóa", "Delete", new {  @id = item.MaBS }, new { @class = "btn btn-danger" })*@
+                    @Html.ActionLink("Chi Tiết", "Details", new { @id = item.MaBS }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Sửa", "Edit", new { @id = item.MaBS }, new { @class = "btn btn-warning" })
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@section datatable
+    {
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tableBacSi').DataTable();
+        });
+    </script>
+}
